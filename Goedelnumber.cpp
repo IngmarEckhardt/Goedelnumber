@@ -1,4 +1,4 @@
-#include "connector.h"
+#include "GoedelGenerator.h"
 #include "HelpPage.h"
 #include <iostream>
 #include <iomanip>
@@ -8,14 +8,17 @@ using std::cin;
 using std::endl;
 using std::setw;
 
-void Menu(bool newprimes, bool debug);
+void Menu(bool newprimes, bool debugflag);
+
+void goedelControl(bool newprimes, bool debugflag);
+
 
 int main(int argc, char *argv[]) {
 
     std::string argument1 = "empty";
     std::string argument2 = "empty";
     bool newPrimes = false;
-    bool debug = false;
+    bool debugflag = false;
 
     if (argc > 1) {
         argument1 = std::string(argv[1]);
@@ -23,14 +26,15 @@ int main(int argc, char *argv[]) {
     if (argc > 2) {
         argument2 = std::string(argv[2]);
     }
-    if (argument1 == "np" || argument2 == "np") { newPrimes = true; }
-    if (argument1 == "debug" || argument2 == "debug") { debug = true; }
+    if (argument1 == "-np" || argument2 == "-np") { newPrimes = true; }
+    if (argument1 == "-debug" || argument2 == "-debug") { debugflag = true; }
 
-    Menu(newPrimes, debug);
+    Menu(newPrimes, debugflag);
 }
 
 
-void Menu(bool newprimes, bool debug) {
+
+void Menu(bool newprimes, bool debugflag) {
 
     std::string input;
     unsigned long int menu;
@@ -49,7 +53,9 @@ void Menu(bool newprimes, bool debug) {
 
         } catch (const std::exception &e) {
 
-            if (debug) { cout << &e << endl; }
+            if (debugflag) {
+                cout << &e << endl;
+            }
             cout << "Bitte geben Sie ausschließlich ganze Zahlen ein" << endl;
             continue;
         }
@@ -61,7 +67,7 @@ void Menu(bool newprimes, bool debug) {
 
         switch (menu) {
             case 1:
-                goedel::goedelmain(newprimes, debug);
+                goedelControl(newprimes, debugflag);
                 break;
 
             case 2:
@@ -75,4 +81,16 @@ void Menu(bool newprimes, bool debug) {
             default:;
         }
     }
+}
+
+void goedelControl(bool newprimes, bool debugflag) {
+
+    GoedelGenerator goedelGenerator (newprimes, debugflag);
+
+    goedelGenerator.getFormulaFromUser(debugflag);
+
+    goedelGenerator.calculateGoedelNumber(debugflag);
+
+    goedelGenerator.printCalculatedNumberToScreen(debugflag);
+
 }

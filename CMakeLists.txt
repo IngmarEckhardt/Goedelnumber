@@ -3,4 +3,4 @@ project(Goedelnumber)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Goedelnumber Goedelnumber.cpp connector.h PrimeRepository.cpp)
+add_executable(Goedelnumber Goedelnumber.cpp PrimeRepository.cpp Primes.cpp Primes.h SieveOfEratosthenes.cpp GoedelGenerator.cpp GoedelGenerator.h)
