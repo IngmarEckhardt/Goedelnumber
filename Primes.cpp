@@ -1,16 +1,18 @@
+#include "Primes.h"
+#include "SieveOfEratosthenes.h"
 #include <filesystem>
 #include <iostream>
-#include "Primes.h"
 
 Primes::Primes(bool debugflag, bool newprimes) {
+    PrimeRepository primeRepository;
 
-    if (!loadPrimes(debugflag) || newprimes) {
+    if (!loadPrimes(debugflag, primeRepository) || newprimes) {
         if (!getNewPrimes(debugflag) && debugflag) {
 
             std::cout << "No Primes loaded from file and creating Primes with Sieve of Erastothenes failed"
                       << std::endl;
 
-        } else if (!writePrimesToFile(debugflag) && debugflag) {
+        } else if (!writePrimesToFile(debugflag,primeRepository) && debugflag) {
 
             std::cout << "No Primes loaded from file, created new list of Primes,"
                          " but couldn't write a new file of Primes" << std::endl;
@@ -23,23 +25,10 @@ Primes::Primes(bool debugflag, bool newprimes) {
     }
 }
 
-bool Primes::loadPrimes(bool debugflag) {
+bool Primes::getNewPrimes(const bool &debugflag, const unsigned long int &maxValue) {
+    Erastosthenes erastosthenes;
 
-    try {
-        listOfPrimes = readPrimesFromFile();
-    }
-    catch (std::filesystem::filesystem_error const &ex) {
-        if (debugflag) {
-            std::cout << ex.what();
-        }
-        return false;
-    }
-    return true;
-}
-
-bool Primes::getNewPrimes(bool debugflag, unsigned long int maxValue) {
-
-    listOfPrimes = yieldPrimes(maxValue);
+    listOfPrimes = erastosthenes.yieldPrimes(maxValue);
     if (debugflag) {
         std::cout << listOfPrimes.size() << "Primes yielded, highest Prime has the value " << listOfPrimes.back()
                   << std::endl;
@@ -49,10 +38,10 @@ bool Primes::getNewPrimes(bool debugflag, unsigned long int maxValue) {
     return true;
 }
 
-bool Primes::writePrimesToFile(bool debugflag) {
+bool Primes::loadPrimes(const bool debugflag, PrimeRepository &primeRepository) {
 
     try {
-        writePrimeVectorToFile(listOfPrimes);
+        listOfPrimes = primeRepository.readPrimesFromFile();
     }
     catch (std::filesystem::filesystem_error const &ex) {
         if (debugflag) {
@@ -63,9 +52,25 @@ bool Primes::writePrimesToFile(bool debugflag) {
     return true;
 }
 
-unsigned long int Primes::getPrime(unsigned int numberOfPrime, bool debugflag) {
+bool Primes::writePrimesToFile(const bool &debugflag, PrimeRepository &primeRepository) {
+
+    try {
+        primeRepository.writePrimeVectorToFile(listOfPrimes);
+    }
+    catch (std::filesystem::filesystem_error const &ex) {
+        if (debugflag) {
+            std::cout << ex.what();
+        }
+        return false;
+    }
+    return true;
+}
+
+
+unsigned long int Primes::getPrime(const unsigned int &numberOfPrime, const bool &debugflag) {
     if (debugflag) {
         std::cout << "Serving prime" << listOfPrimes.at(numberOfPrime) << "out of Prime-Vector" << std::endl;
     }
     return listOfPrimes.at(numberOfPrime);
 }
+

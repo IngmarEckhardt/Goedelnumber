@@ -2,31 +2,24 @@
 #define GOEDELNUMBER_PRIMES_H
 
 #include <vector>
+#include "PrimeRepository.h"
 
 class Primes {
 
 public:
 
-    Primes(bool newprimes = false, bool debugflag = false);
+    explicit Primes(bool newprimes = false, bool debugflag = false);
 
-    bool loadPrimes(bool debugflag);
+    bool getNewPrimes(const bool &debugflag, const unsigned long int &maxValue = 100'000);
 
-    bool getNewPrimes(bool debugflag, unsigned long int maxValue = 100'000);
+    bool loadPrimes(const bool debugflag, PrimeRepository &primeRepository);
 
-    bool writePrimesToFile(bool debugflag);
+    bool writePrimesToFile(const bool &debugflag, PrimeRepository &primeRepository);
 
-    unsigned long int getPrime(unsigned int numberOfPrime, bool debugflag);
+    unsigned long int getPrime(const unsigned int &numberOfPrime, const bool &debugflag);
 
 private:
     std::vector<unsigned long long int> listOfPrimes;
 };
-
-std::vector<unsigned long long int> yieldPrimes(unsigned long long int maxValue);
-
-
-void writePrimeVectorToFile(std::vector<unsigned long long int> vectorToSafe);
-
-std::vector<unsigned long long int> readPrimesFromFile();
-
 
 #endif //GOEDELNUMBER_PRIMES_H

@@ -8,18 +8,24 @@ using std::cin;
 using std::endl;
 using std::setw;
 
+void parseCommandLineArgs(int argc, char *const *argv, bool &newPrimes, bool &debugflag);
 void Menu(bool newprimes, bool debugflag);
-
 void goedelControl(bool newprimes, bool debugflag);
 
 
 int main(int argc, char *argv[]) {
 
-    std::string argument1 = "empty";
-    std::string argument2 = "empty";
     bool newPrimes = false;
     bool debugflag = false;
 
+    parseCommandLineArgs(argc, argv, newPrimes, debugflag);
+
+    Menu(newPrimes, debugflag);
+}
+
+void parseCommandLineArgs(int argc, char *const *argv, bool &newPrimes, bool &debugflag) {
+    std::string argument1 = "";
+    std::string argument2 = "";
     if (argc > 1) {
         argument1 = std::string(argv[1]);
     }
@@ -28,10 +34,7 @@ int main(int argc, char *argv[]) {
     }
     if (argument1 == "-np" || argument2 == "-np") { newPrimes = true; }
     if (argument1 == "-debug" || argument2 == "-debug") { debugflag = true; }
-
-    Menu(newPrimes, debugflag);
 }
-
 
 
 void Menu(bool newprimes, bool debugflag) {
@@ -42,7 +45,7 @@ void Menu(bool newprimes, bool debugflag) {
 
     while (!exit) {
         cout << "\n" << setw(27) << "Menü\n";
-        cout << setw(51) << "Gödelnummer (1)\n";
+        cout << setw(51) << "Berechne eine Gödelnummer (1)\n";
         cout << setw(50) << "Hilfe und Kontakt (2)\n";
         cout << setw(50) << "Programm beenden (0)\n" << endl;
 
@@ -71,7 +74,7 @@ void Menu(bool newprimes, bool debugflag) {
                 break;
 
             case 2:
-                cout << helpText << std::endl;
+                cout << helpText() << std::endl;
                 break;
 
             case 0:
