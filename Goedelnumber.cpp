@@ -44,8 +44,11 @@ void Menu(bool newprimes, bool debugflag) {
     bool exit = false;
 
     while (!exit) {
-        cout << "\n" << setw(27) << "Menü\n";
-        cout << setw(51) << "Berechne eine Gödelnummer (1)\n";
+        if (debugflag){
+            std::cout << "Debugflag is set" << std::endl;
+        }
+        cout << "\n" << setw(27) << "Menue\n";
+        cout << setw(51) << "Berechne eine Goedelnummer (1)\n";
         cout << setw(50) << "Hilfe und Kontakt (2)\n";
         cout << setw(50) << "Programm beenden (0)\n" << endl;
 
@@ -59,7 +62,7 @@ void Menu(bool newprimes, bool debugflag) {
             if (debugflag) {
                 cout << &e << endl;
             }
-            cout << "Bitte geben Sie ausschließlich ganze Zahlen ein" << endl;
+            cout << "Bitte geben Sie ausschliesslich ganze Zahlen ein" << endl;
             continue;
         }
 

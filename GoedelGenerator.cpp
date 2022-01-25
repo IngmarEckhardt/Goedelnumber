@@ -19,7 +19,7 @@ std::string GoedelGenerator::getFormulaFromUser(bool &debugflag) {
     bool exit = false;
 
     do {
-        std::cout << "Geben Sie die Formel ein deren Gödelnummer berechnet werden soll:\n"
+        std::cout << "Geben Sie die Formel ein deren Goedelnummer berechnet werden soll:\n"
                      "(Hinweise zum Format auf der Hilfeseite. Abbrechen mit Enter ohne Eingabe)" << std::endl;
         std::cin >> formulaToCheck;
         if (formulaToCheck.empty()) {exit = true;}
