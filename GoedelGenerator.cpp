@@ -1,7 +1,7 @@
 #include <iostream>
 #include "GoedelGenerator.h"
 
-bool isCorrectFormula(std::string &formulaToCheck, bool &debugflag);
+bool isCorrectFormula(std::string formulaToCheck, bool &debugflag);
 
 std::vector<unsigned long long int> encodeFormula(std::string &formulaToEncode, bool &debugflag);
 
@@ -16,14 +16,17 @@ GoedelGenerator::GoedelGenerator(bool newprimes, bool debugflag) {
 
 std::string GoedelGenerator::getFormulaFromUser(bool &debugflag) {
     std::string formulaToCheck;
-    bool exit = false;
+    bool checkedFormula = false;
 
     do {
         std::cout << "Geben Sie die Formel ein deren Goedelnummer berechnet werden soll:\n"
                      "(Hinweise zum Format auf der Hilfeseite. Abbrechen mit Enter ohne Eingabe)" << std::endl;
-        std::cin >> formulaToCheck;
-        if (formulaToCheck.empty()) {exit = true;}
-    } while (!exit || !isCorrectFormula(formulaToCheck,debugflag));
+        std::getline(std::cin, formulaToCheck);
+        if (formulaToCheck.empty()) {
+            std::cout << "formula was empty" << std::endl;
+            break;}
+        checkedFormula = isCorrectFormula(formulaToCheck,debugflag);
+    } while (!checkedFormula);
     formula = formulaToCheck;
     return formula;
 }
@@ -37,13 +40,14 @@ BigUnsignInt GoedelGenerator::calculateGoedelNumber(bool &debugflag) {
             std::cout << "Couldn't calculate a Goedelnumber because encodedFormula was empty" << std::endl;
         }
         return goedelnumber;
-    }
-    else {
+    } else {
         goedelnumber = BigUnsignInt(1);
-        for (int i = 0; i < encodedFormula.size()-1; i++)
-            goedelnumber *= (intPow(primes.getPrime(i,debugflag),encodedFormula[i]));
+        for (int i = 0; i < encodedFormula.size(); i++) {
+            std::cout << "Die kodierte Zahl ist " << encodedFormula[i] << std::endl;
+            goedelnumber *= (intPow(primes.getPrime(i, debugflag), encodedFormula[i]));
+        }
+        return goedelnumber;
     }
-    return goedelnumber;
 }
 
 
@@ -59,11 +63,14 @@ bool GoedelGenerator::printCalculatedNumberToScreen(bool &debugflag) {
     return false;
 }
 
-bool isCorrectFormula(std::string &formulaToCheck, bool &debugflag) {
-    for (int i = 0; i < formulaToCheck.size()-1; i++) {
+bool isCorrectFormula(std::string formulaToCheck, bool &debugflag) {
+    for (int i = 0; i < formulaToCheck.size(); i++) {
+        std::cout << "Starte mit Zeichen " << i << std::endl;
         if (formulaToCheck[i] == '+' || formulaToCheck[i] == '-' || formulaToCheck[i] == '*' || formulaToCheck[i] == '/'
         || formulaToCheck[i] == '=' || formulaToCheck[i] == 's' || formulaToCheck[i] == '0' || formulaToCheck[i] == 'a' || formulaToCheck[i] == 'b'
-            || formulaToCheck[i] == 'c' || formulaToCheck[i] == 'd' || formulaToCheck[i] == 'e' || formulaToCheck[i] == 'f') {continue;}
+            || formulaToCheck[i] == 'c' || formulaToCheck[i] == 'd' || formulaToCheck[i] == 'e' || formulaToCheck[i] == 'f') {
+            std::cout << "Das Zeichen ist " << formulaToCheck[i] << std::endl;
+            continue;}
         else {return false;}
     }
     return true;
@@ -78,7 +85,7 @@ std::vector<unsigned long long int> encodeFormula(std::string &formulaToEncode, 
         return encodedFormula;
     }
     else {
-        for (int i = 0; i < formulaToEncode.size()-1; i++) {
+        for (int i = 0; i < formulaToEncode.size(); i++) {
             if (formulaToEncode[i] == '+') {encodedFormula[i] = 1;}
             else if (formulaToEncode[i] == '-') {encodedFormula[i] = 2;}
             else if (formulaToEncode[i] == '*') {encodedFormula[i] = 3;}

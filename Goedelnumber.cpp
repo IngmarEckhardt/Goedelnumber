@@ -52,7 +52,7 @@ void Menu(bool newprimes, bool debugflag) {
         cout << setw(50) << "Hilfe und Kontakt (2)\n";
         cout << setw(50) << "Programm beenden (0)\n" << endl;
 
-        cin >> input;
+        std::getline(std::cin,input);
 
         try {
             menu = std::stoul(input);
