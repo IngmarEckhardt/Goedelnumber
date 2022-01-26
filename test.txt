@@ -1,30 +1,30 @@
 Ablauf der Tests
 
-Mit Hilfe des Programmstart-Parameter wird die Erzeugung einer neuen Liste und das Abspeichern als Datei erzwungen.
+Mithilfe des Programmstart-Parameters wird die Erzeugung einer neuen Liste und das Abspeichern als Datei erzwungen.
 
     -> Der Parameter -np wurde zum Programmstart genutzt und das korrekte Erzeugen der Primzahlendatei bei jeder
-    Berechnung, mit Hilfe des Erzeugungszeitpunkt der Datei in einem Datei-Explorer kontrolliert.
+    Berechnung, mithilfe des Erzeugungszeitpunkt der Datei in einem Datei-Explorer kontrolliert.
 
-Mit Hilfe des Programmstart-Parameter "-debug" werden zusätzliche Fehlernachrichten auf dem Screen ausgegeben.
+Mithilfe des Programmstart-Parameter "-debug" werden zusätzliche Fehlernachrichten auf dem Screen ausgegeben.
 
     -> es wurde im Menu statt einer Zahl verschiedene Buchstaben und eine fehlende Eingabe mit Enter genutzt, und
-    geprüft ob die Funktion stoul() die korrekte Fehlermeldung ausgibt und erneut das Menue aufgerufen wird
+    geprüft, ob die Funktion stoul() die korrekte Fehlermeldung ausgibt und erneut das Menue aufgerufen wird
 
-    -> es wurden Zahlen oberhalb der Ziffer 2 und negative Zahlen eingegeben um zu prüfen ob erneut das Menue aufgerufen
-    wird
+    -> es wurden Zahlen oberhalb der Ziffer 2 und negative Zahlen eingegeben um zu prüfen, ob erneut das Menue
+    aufgerufen wird
 
-    -> es wurde mit dem Aufruf von 2 und 0 geprüft ob die Hilfeseite angezeigt wird, bzw das Programm sich ohne
+    -> es wurde mit dem Aufruf von 2 und 0 geprüft, ob die Hilfeseite angezeigt wird, bzw das Programm sich ohne
     Fehlermeldung beendet
 
-    -> es wurde der erste Menupunkt aufgerufen und geprüft ob beim Abbruch mit Enter die Formeleingabe beendet und die
-    darauf folgenden Funktionen korrekt erkennen dass keine Formel eingegeben wurde. Die nachfolgenden Funktionen
+    -> es wurde der erste Menupunkt aufgerufen und geprüft, ob beim Abbruch mit Enter die Formeleingabe beendet wird und
+    die darauf folgenden Funktionen korrekt erkennen, dass keine Formel eingegeben wurde. Die nachfolgenden Funktionen
     drucken dabei Fehlermeldungen auf den Screen, wenn die Erkennung der leeren Formel korrekt erfolgte.
 
     -> es wurden bei der Eingabe der Formel die Zahlen 1 bis 9 eingegeben und weitere nicht in der Formatierung erlaubte
-    Zeichen eingegeben und geprüft ob isCorrectFormula() erkennt dass nicht zulässige Zeichen genutzt wurden
+    Zeichen eingegeben und geprüft ob isCorrectFormula() erkennt, dass nicht zulässige Zeichen genutzt wurden
 
-    -> es wurden Formeln wie "=a", "s00", "a=", "ab", "s0a", "s0++" eingegeben um zu prüfen ob die Erkennung der
-    korrekten Semantik durch isCorrectFormula() funktioniert
+    -> es wurden Formeln wie "=a", "s00", "a=", "ab", "s0a", "s0++", "0sss" eingegeben um zu prüfen, ob die Erkennung
+    der korrekten Semantik durch isCorrectFormula() funktioniert
 
     -> Es wurden bei Setzen des Debugflag die Primzahlen welche zur Berechnung genutzt werden auf dem Screen ausgegeben
     und durch Eingabe einer langen Formel die Korrektheit der Primzahlen bis zur Zahl 419 per Elementvergleich mit einer
