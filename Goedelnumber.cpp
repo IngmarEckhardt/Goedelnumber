@@ -10,8 +10,8 @@
  *
  * @param argc - the Commmandline Argument Counter
  * @param argv - the Commandline Argument Vector
- * @param newPrimes the Bool that will set to true if Argument '-np' is used
- * @param debugflag the Bool that is set to true if Argument '-debug' is used
+ * @param newPrimes the Bool will be set to true if Argument '-np' is used
+ * @param debugflag the Bool will be set to true if Argument '-debug' is used
  * */
 void parseCommandLineArgs(int argc, char *const *argv, bool &newPrimes, bool &debugflag);
 
@@ -37,6 +37,8 @@ void Menu(bool newprimes, bool debugflag);
  * @param debugflag set to true with Commandline Argument to print Error-Messages to Screen
  * */
 void goedelControl(bool newprimes, bool debugflag);
+
+
 
 /**
  * Main-Function
@@ -80,9 +82,9 @@ void Menu(bool newprimes, bool debugflag) {
     while (!exit) {
 
         if (debugflag){
-            std::cout << "\nDebugflag is set\n" << std::endl;
+            std::cout << "\nDebugflag is set" << std::endl;
             if (newprimes) {
-                std::cout << "NewPrimes-flag is set" << std::endl;
+                std::cout << "NewPrimes-flag is set\n" << std::endl;
             }
         }
 
@@ -106,7 +108,7 @@ void Menu(bool newprimes, bool debugflag) {
         }
 
         if (menu > 2) {
-            std::cout << "Bitte wählen Sie ausschließlich vorhandene Menüpunkte aus" << std::endl;
+            std::cout << "Bitte waehlen Sie ausschliesslich vorhandene Menuepunkte aus" << std::endl;
             continue;
         }
 

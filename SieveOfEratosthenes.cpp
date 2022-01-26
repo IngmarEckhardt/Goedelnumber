@@ -18,14 +18,14 @@ std::vector<unsigned long long int> SieveOfErastosthenes::yieldPrimes(unsigned l
     // alle Produkte einer Primzahl aus der Liste löscht.
 
     const unsigned long long int rangeOne = sqrt(size) + 1;
-    for (unsigned long int i = 2; i < rangeOne; i++) {
+    for (unsigned long long int i = 2; i < rangeOne; i++) {
 
         //Ist eine Indexposition schon auf false gesetzt, entspricht sie dem vielfachen einer vorher identifizierten Primzahl
         if (!bitVector[i]) continue;
 
         //Ist die Indexposition true beginnt der Algorythmus alle Produkte dieser Zahl bis zum Ende des Vektors auf false zu setzen
-        unsigned long int rangeTwo = (size - 1) / i + 1;
-        for (unsigned long int j = 2; j < rangeTwo; j++) {
+        unsigned long long int rangeTwo = (size - 1) / i + 1;
+        for (unsigned long long int j = 2; j < rangeTwo; j++) {
             bitVector[i * j] = false;
         }
     }

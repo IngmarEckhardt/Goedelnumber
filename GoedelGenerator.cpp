@@ -36,13 +36,14 @@ BigUnsignInt GoedelGenerator::calculateGoedelNumber(bool &debugflag) {
 
     if (encodedFormula.empty()) {
         if (debugflag) {
-            std::cout << "Couldn't calculate a Goedelnumber because encodedFormula was empty" << std::endl;
+            std::cout << "ERROR: Couldn't calculate a Goedelnumber because encodedFormula was empty" << std::endl;
         }
         return goedelnumber;
     } else {
         goedelnumber = BigUnsignInt(1);
+
         for (int i = 0; i < encodedFormula.size(); i++) {
-            goedelnumber *= (intPow(primes.getPrime(i), encodedFormula[i]));
+            goedelnumber *= (intPow(primes.getPrime(i, debugflag), encodedFormula[i]));
         }
         return goedelnumber;
     }
@@ -52,11 +53,11 @@ BigUnsignInt GoedelGenerator::calculateGoedelNumber(bool &debugflag) {
 bool GoedelGenerator::printCalculatedNumberToScreen(bool &debugflag) {
     if (goedelnumber.isEmpty()) {
         if (debugflag) {
-            std::cout << "Couldn't print Goedelnumber because it was empty" << std::endl;
+            std::cout << "ERROR: Couldn't print Goedelnumber because it was empty" << std::endl;
         }
         return false;
     } else {
-        std::cout << "Die Gödelnummer der Formel \" " << formula << " \" ist: " << goedelnumber << std::endl;
+        std::cout << "Die Goedelnummer der Formel \"" << formula << "\" ist: " << goedelnumber << std::endl;
     }
     return true;
 }
@@ -82,7 +83,7 @@ std::vector<unsigned short int>  GoedelGenerator::encodeFormula(std::string &for
 
     if (formulaToEncode.empty()) {
         if (debugflag) {
-            std::cout << "Unable to encode, formula was empty." << std::endl;
+            std::cout << "ERROR: Unable to encode, formula was empty." << std::endl;
         }
         return encodedFormula;
     } else {

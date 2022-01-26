@@ -25,9 +25,10 @@ public:
      * It serves prime numbers out of the list
      *
      * @param numberOfPrime the prime-number that should be returned
+     * @param debugflag set to true with Commandline Argument to print the Prime-Numbers to Screen
      * @return the prime numbers starting with number 2
      * */
-    unsigned long int getPrime(unsigned int numberOfPrime);
+    unsigned long int getPrime(unsigned int numberOfPrime, bool &debugflag);
 
 private:
     /**

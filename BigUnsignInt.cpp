@@ -43,6 +43,6 @@ std::ostream &operator<<(std::ostream &out,const BigUnsignInt &numberToPrint){
 }
 
 bool BigUnsignInt::isEmpty() {
-    if (digits.empty() || (digits.size()==1 && digits[0] == 0)) {return true;}
+    if (digits.empty() || (digits.size()==1 && digits[0] == 0) || (digits.size()==1 && digits[0] == '0')) {return true;}
     return false;
 }
