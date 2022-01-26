@@ -15,7 +15,7 @@ public:
      *
      * @param number that get stored in a new BigUnsignInt-object
      * */
-    BigUnsignInt(unsigned long long int number = 0);
+    explicit BigUnsignInt(unsigned long long int number = 0);
 
 
     /** *= Operator for the BigUnsignInt

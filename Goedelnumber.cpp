@@ -59,8 +59,8 @@ int main(int argc, char *argv[]) {
 }
 
 void parseCommandLineArgs(int argc, char *const *argv, bool &newPrimes, bool &debugflag) {
-    std::string argument1 = "";
-    std::string argument2 = "";
+    std::string argument1;
+    std::string argument2;
     if (argc > 1) {
         argument1 = std::string(argv[1]);
     }
