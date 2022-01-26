@@ -2,12 +2,6 @@
 #include <regex>
 #include "GoedelGenerator.h"
 
-bool isCorrectFormula(const std::string &formulaToCheck);
-
-
-
-unsigned long long int intPow(unsigned long long int base, unsigned short int exp);
-
 
 GoedelGenerator::GoedelGenerator(bool newprimes) {
     formula = "";
@@ -75,7 +69,7 @@ bool GoedelGenerator::isCorrectFormula(const std::string &formulaToCheck) {
         }
     }
 
-    std::regex meaninglessFormula(R"(0[abcdef]|[abcdef]{2}|[\+\-\*\/]{2}|00|s[\+\-\*\/\=abcdef]|^[\+\-\*\/\=]|[\+\-\*\/\=]$)");
+    std::regex meaninglessFormula(R"(0[abcdef]|[abcdef]{2}|[\+\-\*\/]{2}|00|s[\+\-\*\/\=abcdef]|^[\+\-\*\/\=]|[\+\-\*\/\=s]$)");
 
     if (std::regex_search(formulaToCheck, meaninglessFormula)) {
         std::cout << "Die Formel ergibt semantisch keinen Sinn, enthaelt zB aufeinanderfolgende Nullen.\n" << std::endl;
