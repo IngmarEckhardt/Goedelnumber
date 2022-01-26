@@ -21,11 +21,15 @@ Mit Hilfe des Programmstart-Parameter "-debug" werden zusätzliche Fehlernachric
     drucken dabei Fehlermeldungen auf den Screen, wenn die Erkennung der leeren Formel korrekt erfolgte.
 
     -> es wurden bei der Eingabe der Formel die Zahlen 1 bis 9 eingegeben und weitere nicht in der Formatierung erlaubte
-    Zeichen eingegeben und geprüft ob die isCorrectFormula erkennt dass nicht zulässige Zeichen genutzt wurden
+    Zeichen eingegeben und geprüft ob isCorrectFormula() erkennt dass nicht zulässige Zeichen genutzt wurden
 
-    -> Es werden bei Setzen des Debugflag die Primzahlen welche zur Berechnung genutzt werden auf dem Screen ausgegeben
+    -> es wurden Formeln wie "=a", "s00", "a=", "ab", "s0a", "s0++" eingegeben um zu prüfen ob die Erkennung der
+    korrekten Semantik durch isCorrectFormula() funktioniert
+
+    -> Es wurden bei Setzen des Debugflag die Primzahlen welche zur Berechnung genutzt werden auf dem Screen ausgegeben
     und durch Eingabe einer langen Formel die Korrektheit der Primzahlen bis zur Zahl 419 per Elementvergleich mit einer
     validierten Liste von Primzahlen verglichen.
+
 
     -> es wurde die Formel '+-*/=' eingegeben und die Berechnung der Goedelnummer mit einer händischen Berechnung
     verglichen

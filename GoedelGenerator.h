@@ -55,10 +55,11 @@ public:
 private:
     /** Checking the formula for correctness
      *
-     * Function will check if the User-Input contain only allowed symbols (see Help-Text)
+     * Function will check if the User-Input contain only allowed symbols (see Help-Text) and check the semantic of
+     * the formula if it pass the first check.
      *
      * @param formulaToCheck the String with the User-Input
-     * @return true if the string contain only allowed symbols, false for the other case
+     * @return true if the string contain only allowed symbols and correct semantic, false for the other case
      * */
     bool isCorrectFormula(const std::string &formulaToCheck);
 

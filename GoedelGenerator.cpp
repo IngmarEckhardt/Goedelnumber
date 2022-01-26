@@ -1,4 +1,5 @@
 #include <iostream>
+#include <regex>
 #include "GoedelGenerator.h"
 
 bool isCorrectFormula(const std::string &formulaToCheck);
@@ -63,16 +64,24 @@ bool GoedelGenerator::printCalculatedNumberToScreen(bool &debugflag) {
 }
 
 bool GoedelGenerator::isCorrectFormula(const std::string &formulaToCheck) {
-
     for (const char i: formulaToCheck) {
+
         if (i == '+' || i == '-' || i == '*' || i == '/' || i == '=' || i == 's' || i == '0' || i == 'a' || i == 'b' ||
             i == 'c' || i == 'd' || i == 'e' || i == 'f') {
             continue;
         } else {
-            std::cout << "Die Eingabe entsprach keiner korrekten Formel" << std::endl;
+            std::cout << "Bei der Eingabe wurden nicht zugelassene Zeichen verwendet.\n" << std::endl;
             return false;
         }
     }
+
+    std::regex meaninglessFormula(R"(0[abcdef]|[abcdef]{2}|[\+\-\*\/]{2}|00|s[\+\-\*\/\=abcdef]|^[\+\-\*\/\=]|[\+\-\*\/\=]$)");
+
+    if (std::regex_search(formulaToCheck, meaninglessFormula)) {
+        std::cout << "Die Formel ergibt semantisch keinen Sinn, enthaelt zB aufeinanderfolgende Nullen.\n" << std::endl;
+        return false;
+    }
+
     return true;
 }
 
