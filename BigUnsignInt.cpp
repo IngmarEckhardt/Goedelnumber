@@ -23,22 +23,22 @@ BigUnsignInt &operator*=(BigUnsignInt &bigIntFactor, const unsigned long int &lo
         }
 
     bigIntFactor.digits.resize(interimProduct.size());
-    for (unsigned long long int s, i = 0, t = 0; i < interimProduct.size(); i++) {
+    for (long long int s, i = 0, t = 0; i < interimProduct.size(); i++) {
         s = t + interimProduct[i];
         interimProduct[i] = s % 10;
         t = s / 10;
         bigIntFactor.digits[i] = interimProduct[i];
     }
 
-    for (unsigned long long int i = interimProduct.size() - 1; i >= 1 && !interimProduct[i]; i--) {
+    for (long long int i = interimProduct.size() - 1; i >= 1 && !interimProduct[i]; i--) {
         bigIntFactor.digits.pop_back();
     }
 
     return bigIntFactor;
 }
 std::ostream &operator<<(std::ostream &out,const BigUnsignInt &numberToPrint){
-    for (unsigned long long int i = numberToPrint.digits.size() - 1; i >= 0; i--) {
-        std::cout << (unsigned short int)numberToPrint.digits[i];}
+    for (auto it = numberToPrint.digits.rbegin(); it != numberToPrint.digits.rend(); it++) {
+        std::cout << (unsigned int)*it;}
     return std::cout;
 }
 
