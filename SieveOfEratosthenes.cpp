@@ -21,7 +21,7 @@ std::vector<unsigned long long int> SieveOfErastosthenes::yieldPrimes(unsigned l
     for (unsigned long long int i = 2; i < rangeOne; i++) {
 
         //Ist eine Indexposition schon auf false gesetzt, entspricht sie dem vielfachen einer vorher identifizierten Primzahl
-        if (!bitVector[i]) continue;
+        if (!bitVector[i]) { continue; }
 
         //Ist die Indexposition true beginnt der Algorythmus alle Produkte dieser Zahl bis zum Ende des Vektors auf false zu setzen
         unsigned long long int rangeTwo = (size - 1) / i + 1;

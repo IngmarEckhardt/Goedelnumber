@@ -69,6 +69,13 @@ void parseCommandLineArgs(int argc, char *const *argv, bool &newPrimes, bool &de
     }
     if (argument1 == "-np" || argument2 == "-np") { newPrimes = true; }
     if (argument1 == "-debug" || argument2 == "-debug") { debugflag = true; }
+
+    if (debugflag){
+        std::cout << "\nDebugflag is set" << std::endl;
+        if (newPrimes) {
+            std::cout << "NewPrimes-flag is set\n" << std::endl;
+        }
+    }
 }
 
 
@@ -81,12 +88,7 @@ void Menu(bool newprimes, bool debugflag) {
     // loop that leads the user back to the menu until the exit-Menu Option is called from User
     while (!exit) {
 
-        if (debugflag){
-            std::cout << "\nDebugflag is set" << std::endl;
-            if (newprimes) {
-                std::cout << "NewPrimes-flag is set\n" << std::endl;
-            }
-        }
+
 
         std::cout << std::setw(27) << "Menue\n\n";
         std::cout << std::setw(50) << "Berechne eine Goedelnummer (1)\n";

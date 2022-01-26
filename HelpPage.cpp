@@ -9,7 +9,7 @@ std::string helpText() {
             "wollte. Es werden dabei bestimmte Vorgaben fuer die Eingabe und Berechnung der Goedelnummer gemacht, deren genauer\n"
             "Zweck hier nicht erlaeutert werden soll.(weitergehende Informationen ueber die Goedelnummer und die Hintergruende \n"
             "dieser Vorgaben finden Sie in der deutschsprachigen Wikipedia im Artikel \"Goedelnummer\")\n\n"
-            "Im folgenden werden die Vorgaben fuer die Eingabe der Formel erlaeutert:"
+            "Im folgenden werden die Vorgaben fuer die Eingabe der Formel erlaeutert:\n"
             "Zur Eingabe verwenden Sie bitte ausschliesslich folgende Operatoren: +, -, * (Multiplikation), / (Division), =. \n\n"
             "In der Formel vorkommende konstante Ganzzahlwerte geben Sie bitte in der folgenden Form ein: \n"
             "'0' fuer die Zahl null, weitere Zahlen mit dem Buchstaben 's' als Nachfolger dieser Zahl. Beispiel: Die Zahlen 1 und 2\n"
