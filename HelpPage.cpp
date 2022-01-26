@@ -29,7 +29,7 @@ std::string helpText() {
             "dieser Datei mit Hilfe des Sieb des Erastothenes diese Primzahlen erneut zu berechnen und eine neue Datei für wei-\n"
             "tere Programmstarts anzulegen.\n\n"
             "Startparameter: '-np' Primzahlen-Datei wird neu erzeugt auch wenn sie vorhanden ist\n"
-            "                '-debug' Das Programm berichtet detailliert über die internen Abläufe\n\n"
+            "                '-debug' Das Programm berichtet detaillierter über die internen Abläufe\n\n"
             "Autor: Ingmar Eckhardt. Kontakt: Ingmar.Eckhardt@stud.htwk-leipzig.de\n";
 
     return helpText;

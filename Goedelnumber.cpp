@@ -91,7 +91,7 @@ void Menu(bool newprimes, bool debugflag) {
 
 void goedelControl(bool newprimes, bool debugflag) {
 
-    GoedelGenerator goedelGenerator (newprimes, debugflag);
+    GoedelGenerator goedelGenerator (newprimes);
 
     goedelGenerator.getFormulaFromUser(debugflag);
 

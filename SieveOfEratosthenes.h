@@ -1,7 +1,7 @@
 #ifndef GOEDELNUMBER_SIEVEOFERATOSTHENES_H
 #define GOEDELNUMBER_SIEVEOFERATOSTHENES_H
 
-class Erastosthenes {
+class SieveOfErastosthenes {
 
 public:
     /** Yield Primes with the algorithm of Erastothenes

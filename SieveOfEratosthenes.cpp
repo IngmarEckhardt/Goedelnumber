@@ -3,11 +3,10 @@
 #include "SieveOfEratosthenes.h"
 
 
-std::vector<unsigned long long int> Erastosthenes::yieldPrimes(unsigned long long int maxValue) {
+std::vector<unsigned long long int> SieveOfErastosthenes::yieldPrimes(unsigned long long int maxValue) {
 
     size_t size{maxValue};
     std::vector<unsigned long long int> listOfPrimes;
-    //Ein Bitvector mit der Größe der höchsten gewünschten Primzahl wird erzeugt und alle Bits auf True gesetzt
     std::vector<bool> bitVector(size);
     std::fill(bitVector.begin(), bitVector.end(), true);
 

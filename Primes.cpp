@@ -1,30 +1,29 @@
 #include "Primes.h"
+#include "PrimeRepository.h"
 #include "SieveOfEratosthenes.h"
-#include <iostream>
 
-Primes::Primes(bool newprimes, bool debugflag) {
-    PrimeRepository primeRepository;
+
+Primes::Primes(bool newprimes) {
+
     if (newprimes) {
-        newPrimes(primeRepository);
+        newPrimes();
     } else {
-        listOfPrimes = primeRepository.readPrimesFromFile();
+        listOfPrimes = PrimeRepository::readPrimesFromFile();
         if (listOfPrimes.empty()) {
-            newPrimes(primeRepository);
+            newPrimes();
         }
     }
 }
 
 
-unsigned long int Primes::getPrime(const unsigned int &numberOfPrime, const bool &debugflag) {
-    if (debugflag) {
-    std::cout << "Serving prime" << listOfPrimes.at(numberOfPrime) << "out of Prime-Vector" << std::endl;}
+unsigned long int Primes::getPrime(const unsigned int numberOfPrime) {
 
-return listOfPrimes.at(numberOfPrime);
+return listOfPrimes[numberOfPrime];
 }
 
 
-void Primes::newPrimes(PrimeRepository &primeRepository) {
-    Erastosthenes erastosthenes;
+void Primes::newPrimes() {
+    SieveOfErastosthenes erastosthenes;
     listOfPrimes = erastosthenes.yieldPrimes(100.000);
-    primeRepository.writePrimeVectorToFile(listOfPrimes);
+    PrimeRepository::writePrimeVectorToFile(listOfPrimes);
 }
