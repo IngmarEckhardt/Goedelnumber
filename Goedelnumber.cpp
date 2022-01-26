@@ -3,16 +3,49 @@
 #include <iostream>
 #include <iomanip>
 
-using std::cout;
-using std::cin;
-using std::endl;
-using std::setw;
-
+/**
+ * Parse the Commandline-Arguments
+ *
+ * It parses Commandline Arguments if the user use -np or -debug as Argument, and then set the bool-variables to true.
+ *
+ * @param argc - the Commmandline Argument Counter
+ * @param argv - the Commandline Argument Vector
+ * @param newPrimes the Bool that will set to true if Argument '-np' is used
+ * @param debugflag the Bool that is set to true if Argument '-debug' is used
+ * */
 void parseCommandLineArgs(int argc, char *const *argv, bool &newPrimes, bool &debugflag);
+
+/** Entry Point Menu
+ *
+ * Ask for UserInput in the Menu, check the Input and uses HelpPage.h/.cpp to print a informative text to the screen or
+ * calls goedelControl() to start the core program logic.
+ *
+ * @param newprimes set to true with Commandline Argument to create a new file with prime-numbers instead of
+ *                  using the existing file in further functions
+ * @param debugflag set to true with Commandline Argument to print Error-Messages to Screen
+ * */
 void Menu(bool newprimes, bool debugflag);
+
+/**
+ * Controller for core program logic
+ *
+ * instantiate a instance of the GoedelGenerator.h and uses its class-functions getFormulaFromUser, calculateGoedelnumber,
+ * and printCalculatedNumberToScreen() to control the flow of the core program logic.
+ *
+ * @param newprimes set to true with Commandline Argument to create a new file with prime-numbers instead of
+ *                  using the existing file in further functions
+ * @param debugflag set to true with Commandline Argument to print Error-Messages to Screen
+ * */
 void goedelControl(bool newprimes, bool debugflag);
 
-
+/**
+ * Main-Function
+ *
+ * initiate the parsing of the CommandLine-Arguments with parseCommandLineArgs() and start the Menu()-Funktion
+ *
+ * @param argc the argument counter that is served from the Operating System
+ * @param argv the argument Vector that is served from the Operating System
+ * */
 int main(int argc, char *argv[]) {
 
     bool newPrimes = false;
@@ -40,17 +73,23 @@ void parseCommandLineArgs(int argc, char *const *argv, bool &newPrimes, bool &de
 void Menu(bool newprimes, bool debugflag) {
 
     std::string input;
-    unsigned long int menu;
+    unsigned short int menu;
     bool exit = false;
 
+    // loop that leads the user back to the menu until the exit-Menu Option is called from User
     while (!exit) {
+
         if (debugflag){
-            std::cout << "Debugflag is set" << std::endl;
+            std::cout << "\nDebugflag is set\n" << std::endl;
+            if (newprimes) {
+                std::cout << "NewPrimes-flag is set" << std::endl;
+            }
         }
-        cout << "\n" << setw(27) << "Menue\n";
-        cout << setw(51) << "Berechne eine Goedelnummer (1)\n";
-        cout << setw(50) << "Hilfe und Kontakt (2)\n";
-        cout << setw(50) << "Programm beenden (0)\n" << endl;
+
+        std::cout << std::setw(27) << "Menue\n\n";
+        std::cout << std::setw(50) << "Berechne eine Goedelnummer (1)\n";
+        std::cout << std::setw(50) << "Hilfe und Kontakt (2)\n";
+        std::cout << std::setw(50) << "Programm beenden (0)\n" << std::endl;
 
         std::getline(std::cin,input);
 
@@ -60,14 +99,14 @@ void Menu(bool newprimes, bool debugflag) {
         } catch (const std::exception &e) {
 
             if (debugflag) {
-                cout << &e << endl;
+                std::cout << &e << std::endl;
             }
-            cout << "Bitte geben Sie ausschliesslich ganze Zahlen ein" << endl;
+            std::cout << "Bitte geben Sie ausschliesslich ganze Zahlen ein" << std::endl;
             continue;
         }
 
         if (menu > 2) {
-            cout << "Bitte wählen Sie ausschließlich vorhandene Menüpunkte aus" << endl;
+            std::cout << "Bitte wählen Sie ausschließlich vorhandene Menüpunkte aus" << std::endl;
             continue;
         }
 
@@ -77,7 +116,7 @@ void Menu(bool newprimes, bool debugflag) {
                 break;
 
             case 2:
-                cout << helpText() << std::endl;
+                std::cout << helpText() << std::endl;
                 break;
 
             case 0:

@@ -17,7 +17,7 @@ public:
      * @param newprimes set to true with Commandline Argument to create a new file with prime-numbers instead of
      *                  using the existing file
      * */
-    explicit GoedelGenerator(bool newprimes = false);
+    explicit GoedelGenerator(bool newprimes);
 
     /**
      * Managing the User-Input
@@ -85,10 +85,12 @@ private:
      * */
     unsigned long long int intPow(unsigned long long int base, unsigned short int exp);
 
-    ///stores the Goedelnumber in a BigUnsignInt-Object
+    /// stores the Goedelnumber in a BigUnsignInt-Object
     BigUnsignInt goedelnumber;
-    ///stores the UserInput in a string
+
+    /// stores the UserInput in a string
     std::string formula;
+
     /// stores a instance of a Primes-Class-Object.
     Primes primes;
 };
