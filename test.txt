@@ -2,8 +2,8 @@ Ablauf der Tests
 
 Mit Hilfe des Programmstart-Parameter wird die Erzeugung einer neuen Liste und das Abspeichern als Datei erzwungen.
 
-    -> Der Parameter wurde zum Programmstart genutzt und das korrekte Erzeugen der Primzahlendatei bei jeder Berechnung,
-    mit Hilfe des Erzeugungszeitpunkt der Datei in einem Datei-Explorer kontrolliert.
+    -> Der Parameter -np wurde zum Programmstart genutzt und das korrekte Erzeugen der Primzahlendatei bei jeder
+    Berechnung, mit Hilfe des Erzeugungszeitpunkt der Datei in einem Datei-Explorer kontrolliert.
 
 Mit Hilfe des Programmstart-Parameter "-debug" werden zusätzliche Fehlernachrichten auf dem Screen ausgegeben.
 
@@ -32,3 +32,9 @@ Mit Hilfe des Programmstart-Parameter "-debug" werden zusätzliche Fehlernachric
 
     -> es wurde die Formeln "a+b" "c-d" "e*f" "a/b" "a=b" "s0" "ss0" eingegeben und die Berechnung der Goedelnummer mit
     einer händischen Berechnung mit einem Taschenrechner verglichen
+
+    -> es wurde während des Programmablaufs ohne Nutzung des "-np" Startarguments die primes.txt händisch gelöscht und
+    geprüft ob das Programm sie neu anlegt
+
+    -> es wurde anhand des Erstellungszeitpunkts der primes.txt geprüft, dass das Programm eine vorhandene Datei nutzt
+    ohne sie zu überschreiben
