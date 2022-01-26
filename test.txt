@@ -30,9 +30,5 @@ Mit Hilfe des Programmstart-Parameter "-debug" werden zusätzliche Fehlernachric
     und durch Eingabe einer langen Formel die Korrektheit der Primzahlen bis zur Zahl 419 per Elementvergleich mit einer
     validierten Liste von Primzahlen verglichen.
 
-
-    -> es wurde die Formel '+-*/=' eingegeben und die Berechnung der Goedelnummer mit einer händischen Berechnung
-    verglichen
-
-    -> es wurde die Formel 'abc' und die Formel 'def' eingegeben und die Bererechnung der Goedelnummer mit einer
-    händischen Berechnung verglichen.
+    -> es wurde die Formeln "a+b" "c-d" "e*f" "a/b" "a=b" "s0" "ss0" eingegeben und die Berechnung der Goedelnummer mit
+    einer händischen Berechnung mit einem Taschenrechner verglichen
